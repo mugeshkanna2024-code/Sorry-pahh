@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Apology | My Promises</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤝</text></svg>">
+    <style>
+        .promise-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .promise-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .promise-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .promise-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .promise-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding: 20px;
+            margin: 30px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #43cea2;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: #43cea2;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+    </style>
+</head>
+<body class="bg-anime-3">
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div style="text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 20px; animation: float 3s ease-in-out infinite;">🤝</div>
+            <div class="loading-text">
+                Loading <span class="loading-dots"><span>.</span><span>.</span><span>.</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="anime-nav">
+        <button class="nav-btn" onclick="window.location.href='index.html'">
+            <span>🏠</span> Home
+        </button>
+        <button class="nav-btn" onclick="window.location.href='sorry.html'">
+            <span>💔</span> Apology
+        </button>
+        <button class="nav-btn active" onclick="window.location.href='third.html'">
+            <span>🤝</span> Promises
+        </button>
+        <button class="nav-btn" onclick="window.location.href='fourth.html'">
+            <span>💭</span> Memories
+        </button>
+    </nav>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <div class="toggle-slider">🌙</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <div style="padding: 40px 20px;">
+            <div class="text-center">
+                <h1 class="anime-title" style="color: white; font-size: 3rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.3);">
+                    約束
+                    <span style="font-size: 1.8rem; display: block; margin-top: 10px; color: #b3ffec;">
+                        My Promises to You
+                    </span>
+                </h1>
+                
+                <div class="distance-line"></div>
+            </div>
+            
+            <div class="anime-card" style="background: rgba(255,255,255,0.1); max-width: 700px; margin: 30px auto;">
+                <p class="anime-text" style="color: white; font-size: 1.2rem; line-height: 1.8; text-align: center;">
+                    Like the slow, deliberate fall of cherry blossoms at 5cm per second, 
+                    I make these promises with intention and care. Each one is a step 
+                    toward becoming the person you deserve.
+                </p>
+            </div>
+            
+            <div class="promise-container">
+                <!-- Promise 1 -->
+                <div class="promise-card">
+                    <div class="promise-icon">👂</div>
+                    <h3 style="color: white; margin-bottom: 10px;">Active Listening</h3>
+                    <p style="color: #b3ffec; font-size: 0.95rem;">
+                        I will listen without interrupting, understand without judging, 
+                        and remember what matters to you.
+                    </p>
+                </div>
+                
+                <!-- Promise 2 -->
+                <div class="promise-card">
+                    <div class="promise-icon">💬</div>
+                    <h3 style="color: white; margin-bottom: 10px;">Honest Communication</h3>
+                    <p style="color: #b3ffec; font-size: 0.95rem;">
+                        No more hidden feelings or unspoken words. I'll share my thoughts 
+                        openly and encourage you to do the same.
+                    </p>
+                </div>
+                
+                <!-- Promise 3 -->
+                <div class="promise-card">
+                    <div class="promise-icon">⏳</div>
+                    <h3 style="color: white; margin-bottom: 10px;">Patience & Understanding</h3>
+                    <p style="color: #b3ffec; font-size: 0.95rem;">
+                        I'll give you space when needed, time to process, and 
+                        understanding without pressure.
+                    </p>
+                </div>
+                
+                <!-- Promise 4 -->
+                <div class="promise-card">
+                    <div class="promise-icon">🤗</div>
+                    <h3 style="color: white; margin-bottom: 10px;">Support & Encouragement</h3>
+                    <p style="color: #b3ffec; font-size: 0.95rem;">
+                        I'll be your biggest supporter, celebrating your wins and 
+                        comforting you during challenges.
+                    </p>
+                </div>
+                
+                <!-- Promise 5 -->
+                <div class="promise-card">
+                    <div class="promise-icon">💝</div>
+                    <h3 style="color: white; margin-bottom: 10px;">Daily Appreciation</h3>
+                    <p style="color: #b3ffec; font-size: 0.95rem;">
+                        I won't take you for granted. I'll show appreciation for 
+                        the little things every single day.
+                    </p>
+                </div>
+                
+                <!-- Promise 6 -->
+                <div class="promise-card">
+                    <div class="promise-icon">🌱</div>
+                    <h3 style="color: white; margin-bottom: 10px;">Continuous Growth</h3>
+                    <p style="color: #b3ffec; font-size: 0.95rem;">
+                        I'll work on myself continuously, learning from mistakes 
+                        and striving to be better.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="promise-timeline">
+                <h3 style="color: white; text-align: center; margin-bottom: 30px; font-size: 1.5rem;">
+                    <span style="margin-right: 10px;">📅</span>
+                    My Action Plan
+                    <span style="margin-left: 10px;">📅</span>
+                </h3>
+                
+                <div class="timeline-item">
+                    <h4 style="color: #b3ffec; margin-bottom: 10px;">Immediate Actions (This Week)</h4>
+                    <p style="color: white; font-size: 0.95rem;">
+                        • Reflect on what went wrong<br>
+                        • Give you space if needed<br>
+                        • Start practicing active listening
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4 style="color: #b3ffec; margin-bottom: 10px;">Short Term (This Month)</h4>
+                    <p style="color: white; font-size: 0.95rem;">
+                        • Establish better communication habits<br>
+                        • Show consistent appreciation<br>
+                        • Rebuild trust through actions
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4 style="color: #b3ffec; margin-bottom: 10px;">Long Term (Always)</h4>
+                    <p style="color: white; font-size: 0.95rem;">
+                        • Maintain these positive changes<br>
+                        • Grow together as individuals and partners<br>
+                        • Create beautiful memories together
+                    </p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-40">
+                <div class="anime-card" style="max-width: 600px; margin: 0 auto; background: rgba(255,255,255,0.1);">
+                    <p style="color: white; font-size: 1.1rem; line-height: 1.8;">
+                        "Trust grows slowly, like cherry blossoms that take years to bloom. 
+                        I'm willing to wait and nurture it patiently, at 5 centimeters per second."
+                    </p>
+                </div>
+                
+                <div class="mt-40">
+                    <div class="flex-center">
+                        <a href="index.html" class="anime-btn">
+                            <span style="margin-right: 10px;">←</span>
+                            Back Home
+                        </a>
+                        
+                        <a href="sorry.html" class="anime-btn">
+                            <span style="margin-right: 10px;">←</span>
+                            Page 2
+                        </a>
+                        
+                        <button onclick="sendVirtualHug()" class="anime-btn anime-btn-primary">
+                            Send Virtual Hug
+                            <span style="margin-left: 10px;">🤗</span>
+                        </button>
+                        
+                        <a href="fourth.html" class="anime-btn">
+                            Page 4
+                            <span style="margin-left: 10px;">→</span>
+                        </a>
+                    </div>
+                    
+                    <div class="mt-30 flex-center">
+                        <a href="fourth.html" class="anime-btn" style="font-size: 0.9rem; padding: 8px 20px;">
+                            Jump to Page 4: Special Memories
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-40">
+                <div class="anime-card" style="max-width: 500px; margin: 0 auto; background: rgba(255,255,255,0.05);">
+                    <p style="color: rgba(255,255,255,0.9); font-style: italic; text-align: center; font-size: 0.9rem;">
+                        "Promises are like sakura petals - fragile but beautiful. 
+                        I'll handle ours with utmost care."
+                    </p>
+                    <div style="text-align: right; margin-top: 15px; color: #b3ffec;">
+                        <strong>@anujbuilds</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="particles.js"></script>
+    <script src="weather-effects.js"></script>
+<script src="music-player.js"></script>
+    <script src="save-progress.js"></script>
+    <script src="transitions.js"></script>
+
+    <script>
+        // Theme toggle function
+        function toggleTheme() {
+            const toggle = document.querySelector('.theme-toggle');
+            const isNight = !toggle.classList.contains('night');
+            
+            toggle.classList.toggle('night');
+            
+            // Change body class for different backgrounds
+            const body = document.body;
+            const currentBg = body.className;
+            
+            if (isNight) {
+                body.className = currentBg.replace('bg-anime-3', 'night-bg-3');
+                document.dispatchEvent(new CustomEvent('themeChange', {
+                    detail: { isNight: true }
+                }));
+            } else {
+                body.className = currentBg.replace('night-bg-3', 'bg-anime-3');
+                document.dispatchEvent(new CustomEvent('themeChange', {
+                    detail: { isNight: false }
+                }));
+            }
+        }
+        
+        // Virtual hug function
+        function sendVirtualHug() {
+            // Create hug animation
+            const hugContainer = document.createElement('div');
+            hugContainer.style.position = 'fixed';
+            hugContainer.style.top = '0';
+            hugContainer.style.left = '0';
+            hugContainer.style.width = '100%';
+            hugContainer.style.height = '100%';
+            hugContainer.style.zIndex = '9999';
+            hugContainer.style.display = 'flex';
+            hugContainer.style.justifyContent = 'center';
+            hugContainer.style.alignItems = 'center';
+            hugContainer.style.pointerEvents = 'none';
+            
+            const hugMessage = document.createElement('div');
+            hugMessage.innerHTML = `
+                <div style="
+                    background: rgba(255, 255, 255, 0.95);
+                    padding: 40px;
+                    border-radius: 20px;
+                    text-align: center;
+                    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+                    animation: fadeIn 0.5s ease;
+                    max-width: 400px;
+                ">
+                    <div style="font-size: 4rem; margin-bottom: 20px;">🤗💖</div>
+                    <h3 style="color: #333; margin-bottom: 15px; font-size: 1.8rem;">
+                        Virtual Hug Sent!
+                    </h3>
+                    <p style="color: #555; line-height: 1.6; margin-bottom: 20px;">
+                        Sending you warmest hugs across the distance! 
+                        Even at 5cm per second, love finds its way.
+                    </p>
+                    <div style="font-size: 2rem; margin: 20px 0;">
+                        🌸 💝 🌸
+                    </div>
+                </div>
+            `;
+            
+            hugContainer.appendChild(hugMessage);
+            document.body.appendChild(hugContainer);
+            
+            // Create floating hearts
+            for(let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '💖';
+                    heart.style.position = 'fixed';
+                    heart.style.left = `${Math.random() * 100}vw`;
+                    heart.style.top = '100vh';
+                    heart.style.fontSize = `${Math.random() * 30 + 20}px`;
+                    heart.style.zIndex = '9998';
+                    heart.style.opacity = '0.9';
+                    
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 3000);
+                }, i * 100);
+            }
+            
+            // Remove message after 3 seconds
+            setTimeout(() => {
+                hugMessage.style.animation = 'fadeOut 0.5s ease';
+                setTimeout(() => {
+                    hugContainer.remove();
+                }, 500);
+            }, 3000);
+            
+            // Add fadeOut animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeOut {
+                    from { opacity: 1; transform: scale(1); }
+                    to { opacity: 0; transform: scale(0.8); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide loading screen
+            setTimeout(() => {
+                const loadingScreen = document.querySelector('.loading-screen');
+                loadingScreen.classList.add('hidden');
+            }, 2000);
+            
+            // Animate promise cards on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.promise-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

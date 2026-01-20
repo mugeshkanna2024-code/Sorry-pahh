@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Apology | Special Memories</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💭</text></svg>">
+    <style>
+        .memory-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .memory-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid transparent;
+        }
+        
+        .memory-item:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .memory-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            display: block;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+        }
+        
+        .secret-box {
+            background: linear-gradient(135deg, rgba(255, 154, 158, 0.2), rgba(250, 208, 196, 0.2));
+            border: 2px dashed rgba(255, 154, 158, 0.5);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .secret-box:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 154, 158, 0.3);
+        }
+        
+        .secret-box.locked::before {
+            content: '🔒';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+        
+        .fireworks-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+        }
+        
+        .firework {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0;
+            animation: fireworkExplode 1s ease-out;
+        }
+        
+        @keyframes fireworkExplode {
+            0% { transform: scale(0) translateY(0); opacity: 1; }
+            50% { transform: scale(1) translateY(-50px); opacity: 1; }
+            100% { transform: scale(0) translateY(-100px); opacity: 0; }
+        }
+        
+        .page-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-anime-4">
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div style="text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 20px; animation: float 3s ease-in-out infinite;">💭</div>
+            <div class="loading-text">
+                Loading <span class="loading-dots"><span>.</span><span>.</span><span>.</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="anime-nav">
+        <button class="nav-btn" onclick="window.location.href='index.html'">
+            <span>🏠</span> Home
+        </button>
+        <button class="nav-btn" onclick="window.location.href='sorry.html'">
+            <span>💔</span> Apology
+        </button>
+        <button class="nav-btn" onclick="window.location.href='third.html'">
+            <span>🤝</span> Promises
+        </button>
+        <button class="nav-btn active" onclick="window.location.href='fourth.html'">
+            <span>💭</span> Memories
+        </button>
+    </nav>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <div class="toggle-slider">🌙</div>
+    </div>
+
+    <!-- Page Counter -->
+    <div class="page-counter">Page 4/4 • Final Chapter</div>
+
+    <!-- Fireworks Container -->
+    <div class="fireworks-container" id="fireworksContainer"></div>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <div style="padding: 60px 20px 40px;">
+            <div class="text-center">
+                <h1 class="anime-title" style="color: white; font-size: 3rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.4);">
+                    思い出と未来
+                    <span style="font-size: 1.8rem; display: block; margin-top: 10px; color: #d1c4ff;">
+                        Memories & Future
+                    </span>
+                </h1>
+                
+                <div class="distance-line"></div>
+                
+                <div style="margin: 30px 0;">
+                    <div class="sparkle" style="font-size: 3rem; letter-spacing: 15px;">
+                        ✨ 💖 ✨
+                    </div>
+                </div>
+            </div>
+            
+            <div class="anime-card" style="background: rgba(255,255,255,0.1); max-width: 800px; margin: 30px auto;">
+                <p class="anime-text" style="color: white; font-size: 1.2rem; line-height: 1.8; text-align: center;">
+                    This final page is dedicated to all the beautiful moments we've shared 
+                    and the future we can build together. Like the anime "5 Centimeters Per Second," 
+                    true connections endure across time and distance.
+                </p>
+            </div>
+            
+            <div class="memory-gallery">
+                <!-- Memory 1 -->
+                <div class="memory-item" onclick="showMemory(1)">
+                    <div class="memory-icon">💬</div>
+                    <h3 style="color: white; margin-bottom: 10px;">Our Conversations</h3>
+                    <p style="color: #d1c4ff; font-size: 0.9rem;">
+                        Late night talks, shared dreams, and inside jokes that only we understand.
+                    </p>
+                </div>
+                
+                <!-- Memory 2 -->
+                <div class="memory-item" onclick="showMemory(2)">
+                    <div class="memory-icon">😂</div>
+                    <h3 style="color: white; margin-bottom: 10px;">Laughter Together</h3>
+                    <p style="color: #d1c4ff; font-size: 0.9rem;">
+                        Moments when we couldn't stop laughing, tears of joy, pure happiness.
+                    </p>
+                </div>
+                
+                <!-- Memory 3 -->
+                <div class="memory-item" onclick="showMemory(3)">
+                    <div class="memory-icon">🤝</div>
+                    <h3 style="color: white; margin-bottom: 10px;">Support & Comfort</h3>
+                    <p style="color: #d1c4ff; font-size: 0.9rem;">
+                        Being there for each other during tough times, offering strength and comfort.
+                    </p>
+                </div>
+                
+                <!-- Memory 4 -->
+                <div class="memory-item" onclick="showMemory(4)">
+                    <div class="memory-icon">🌟</div>
+                    <h3 style="color: white; margin-bottom: 10px;">Shared Dreams</h3>
+                    <p style="color: #d1c4ff; font-size: 0.9rem;">
+                        Planning future adventures, supporting each other's goals and aspirations.
+                    </p>
+                </div>
+                
+                <!-- Memory 5 -->
+                <div class="memory-item" onclick="showMemory(5)">
+                    <div class="memory-icon">🌅</div>
+                    <h3 style="color: white; margin-bottom: 10px;">Quiet Moments</h3>
+                    <p style="color: #d1c4ff; font-size: 0.9rem;">
+                        Comfortable silences, just enjoying each other's presence without words.
+                    </p>
+                </div>
+                
+                <!-- Memory 6 -->
+                <div class="memory-item" onclick="showMemory(6)">
+                    <div class="memory-icon">🎉</div>
+                    <h3 style="color: white; margin-bottom: 10px;">Celebrations</h3>
+                    <p style="color: #d1c4ff; font-size: 0.9rem;">
+                        Small victories celebrated together, making ordinary moments special.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="secret-box locked" id="secretBox" onclick="revealSecret()">
+                <div style="font-size: 2rem; margin-bottom: 15px;">🔒</div>
+                <h3 style="color: #ffd6e7; margin-bottom: 10px;">Secret Message for You</h3>
+                <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.95rem;">
+                    Click to unlock a special message from my heart
+                </p>
+            </div>
+            
+            <div class="anime-card" style="background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.15), 
+                rgba(255, 255, 255, 0.05)); border-radius: 20px; padding: 40px; margin: 50px 0;">
+                <h2 style="color: white; text-align: center; margin-bottom: 30px; font-size: 2rem;">
+                    <span style="margin-right: 15px;">🌸</span>
+                    Looking Forward
+                    <span style="margin-left: 15px;">🌸</span>
+                </h2>
+                
+                <p class="anime-text" style="color: white; font-size: 1.1rem; line-height: 1.8; text-align: center;">
+                    No matter what happens next, I want you to know how much you've meant to me. 
+                    Every moment, every memory, every lesson has been precious.
+                </p>
+                
+                <div style="margin: 40px 0; padding: 25px; background: rgba(255,255,255,0.05); border-radius: 15px;">
+                    <p style="color: #d1c4ff; font-style: italic; text-align: center; line-height: 1.6;">
+                        "If we're meant to be, we'll find our way back to each other, 
+                        moving forward at our own pace - even if it's just 5 centimeters per second."
+                    </p>
+                </div>
+                
+                <p class="anime-text" style="color: white; font-size: 1.1rem; line-height: 1.8; text-align: center;">
+                    I hope our paths cross again in the future. And if they do, 
+                    I promise to be a better person, a better friend, and someone worthy of your trust.
+                </p>
+            </div>
+            
+            <div class="text-center mt-40">
+                <div class="flex-center">
+                    <a href="index.html" class="anime-btn">
+                        <span style="margin-right: 10px;">🏠</span>
+                        Back to Home
+                    </a>
+                    
+                    <a href="sorry.html" class="anime-btn">
+                        <span style="margin-right: 10px;">←</span>
+                        Page 2: Apology
+                    </a>
+                    
+                    <button onclick="createFireworks()" class="anime-btn anime-btn-primary">
+                        <span style="margin-right: 10px;">🎆</span>
+                        Celebrate Us!
+                        <span style="margin-left: 10px;">🎆</span>
+                    </button>
+                    
+                    <a href="third.html" class="anime-btn">
+                        Page 3: Promises
+                        <span style="margin-left: 10px;">←</span>
+                    </a>
+                </div>
+                
+                <div class="mt-30">
+                    <button onclick="createLoveStorm()" class="anime-btn" 
+                            style="background: rgba(255, 105, 180, 0.3); border-color: rgba(255, 105, 180, 0.5);">
+                        Create Love Storm
+                        <span style="margin-left: 10px;">💖</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="mt-50">
+                <div class="anime-card" style="background: rgba(255,255,255,0.05); max-width: 600px; margin: 0 auto;">
+                    <p style="color: rgba(255,255,255,0.9); text-align: center; line-height: 1.6;">
+                        "Thank you for being part of my story. No matter where life takes us, 
+                        you'll always have a special place in my heart."
+                    </p>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">🌸 💝 🌸</div>
+                        <div style="color: #d1c4ff; font-weight: bold;">
+                            With all my love,<br>
+                            @anujbuilds
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="particles.js"></script>
+    <script src="weather-effects.js"></script>
+    <script src="music-player.js"></script>
+    <script src="save-progress.js"></script>
+    <script src="transitions.js"></script>
+
+    <script>
+        // Theme toggle function
+        function toggleTheme() {
+            const toggle = document.querySelector('.theme-toggle');
+            const isNight = !toggle.classList.contains('night');
+            
+            toggle.classList.toggle('night');
+            
+            // Change body class for different backgrounds
+            const body = document.body;
+            const currentBg = body.className;
+            
+            if (isNight) {
+                body.className = currentBg.replace('bg-anime-4', 'night-bg-4');
+                document.dispatchEvent(new CustomEvent('themeChange', {
+                    detail: { isNight: true }
+                }));
+            } else {
+                body.className = currentBg.replace('night-bg-4', 'bg-anime-4');
+                document.dispatchEvent(new CustomEvent('themeChange', {
+                    detail: { isNight: false }
+                }));
+            }
+        }
+        
+        // Show memory details
+        function showMemory(number) {
+            const memories = [
+                "💬 Our Conversations: Remember how we could talk for hours about everything and nothing? Those conversations where time seemed to stop, and it was just us in our own little world.",
+                "😂 Laughter Together: That time we couldn't stop laughing over something silly. Your laugh is my favorite sound - genuine, contagious, and full of joy.",
+                "🤝 Support & Comfort: When life got tough, we were there for each other. Holding space for pain, offering comfort without judgment, being a safe harbor in the storm.",
+                "🌟 Shared Dreams: Planning adventures, dreaming about the future, supporting each other's goals. You believed in me even when I didn't believe in myself.",
+                "🌅 Quiet Moments: Just being together in comfortable silence, watching the sunset, enjoying each other's presence without needing words.",
+                "🎉 Celebrations: Celebrating small victories together - your achievements felt like mine, and mine felt like yours. We made each other better."
+            ];
+            
+            const message = document.createElement('div');
+            message.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: rgba(0, 0, 0, 0.85);
+                    color: white;
+                    padding: 30px;
+                    border-radius: 15px;
+                    max-width: 500px;
+                    width: 90%;
+                    z-index: 9999;
+                    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+                    backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255,255,255,0.1);
+                    animation: fadeIn 0.5s ease;
+                ">
+                    <div style="text-align: right;">
+                        <button onclick="this.parentElement.parentElement.remove()" 
+                                style="background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer;">
+                            ✕
+                        </button>
+                    </div>
+                    <div style="font-size: 3rem; text-align: center; margin-bottom: 20px;">
+                        ${['💬', '😂', '🤝', '🌟', '🌅', '🎉'][number-1]}
+                    </div>
+                    <p style="line-height: 1.6; text-align: center;">
+                        ${memories[number-1]}
+                    </p>
+                    <div style="text-align: center; margin-top: 20px; color: #d1c4ff;">
+                        💭 A precious memory 💭
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(message);
+        }
+        
+        // Reveal secret message
+        function revealSecret() {
+            const box = document.getElementById('secretBox');
+            box.className = 'secret-box';
+            box.innerHTML = `
+                <div style="font-size: 2rem; margin-bottom: 15px; animation: sparkle 2s infinite;">🔓</div>
+                <h3 style="color: #ffd6e7; margin-bottom: 15px;">My Heart's Secret</h3>
+                <p style="color: white; font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px;">
+                    No matter what happens, I want you to know this: <br><br>
+                    <strong style="color: #ffd6e7;">You are loved more than you'll ever know.</strong> <br><br>
+                    Even if we're apart, even if time passes, even if distance grows - 
+                    what we shared was real and beautiful. You deserve all the happiness in the world.
+                </p>
+                <div style="font-size: 1.5rem; color: #ffd6e7;">
+                    💖 Forever in my heart 💖
+                </div>
+            `;
+            box.onclick = null;
+            box.style.cursor = 'default';
+            
+            // Record secret
+            if (window.progressTracker) {
+                window.progressTracker.recordSecret('secret_message');
+            }
+            
+            // Create floating hearts
+            for(let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '💖';
+                    heart.style.position = 'fixed';
+                    heart.style.left = `${Math.random() * 100}vw`;
+                    heart.style.top = `${Math.random() * 100}vh`;
+                    heart.style.fontSize = `${Math.random() * 25 + 15}px`;
+                    heart.style.zIndex = '9998';
+                    heart.style.opacity = '0.9';
+                    
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 3000);
+                }, i * 100);
+            }
+        }
+        
+        // Create fireworks celebration
+        function createFireworks() {
+            const container = document.getElementById('fireworksContainer');
+            const emojis = ['🎆', '🎇', '✨', '💥', '🌟'

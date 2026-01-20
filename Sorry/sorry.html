@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Apology | I'm Sorry</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💔</text></svg>">
+    <style>
+        .apology-heart {
+            font-size: 5rem;
+            animation: heartbeat 1.5s infinite;
+            display: block;
+            margin: 30px auto;
+            filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.5));
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .rain-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2;
+        }
+        
+        .rain-drop {
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: linear-gradient(to bottom, transparent, rgba(160, 210, 255, 0.7), transparent);
+            animation: rainFall 1.5s linear infinite;
+        }
+        
+        @keyframes rainFall {
+            0% { transform: translateY(-50px); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-anime-2">
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div style="text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 20px; animation: float 3s ease-in-out infinite;">💔</div>
+            <div class="loading-text">
+                Loading <span class="loading-dots"><span>.</span><span>.</span><span>.</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="anime-nav">
+        <button class="nav-btn" onclick="window.location.href='index.html'">
+            <span>🏠</span> Home
+        </button>
+        <button class="nav-btn active" onclick="window.location.href='sorry.html'">
+            <span>💔</span> Apology
+        </button>
+        <button class="nav-btn" onclick="window.location.href='third.html'">
+            <span>🤝</span> Promises
+        </button>
+        <button class="nav-btn" onclick="window.location.href='fourth.html'">
+            <span>💭</span> Memories
+        </button>
+    </nav>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <div class="toggle-slider">🌙</div>
+    </div>
+
+    <!-- Rain Effect Container -->
+    <div class="rain-container" id="rainContainer"></div>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <div class="text-center" style="padding: 40px 20px;">
+            <div class="apology-heart">💔</div>
+            
+            <h1 class="anime-title" style="color: white; font-size: 3rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.3);">
+                ごめんなさい
+                <span style="font-size: 1.8rem; display: block; margin-top: 10px; color: #ffd6e7;">
+                    I'm So Sorry
+                </span>
+            </h1>
+            
+            <div class="distance-line"></div>
+            
+            <div class="anime-card" style="max-width: 700px; margin: 30px auto; background: rgba(255,255,255,0.1);">
+                <p class="anime-text" style="color: white; font-size: 1.2rem; line-height: 1.8;">
+                    私が間違っていたことを知っています。すべての間違いが心に重くのしかかり、
+                    あなたに与えた痛みを深く後悔しています。
+                </p>
+                
+                <p class="anime-text" style="color: #ffd6e7; margin-top: 25px; font-size: 1.1rem;">
+                    You mean everything to me, and seeing you hurt because of my actions 
+                    is the most painful experience. Like cherry blossoms that fall too soon, 
+                    I regret every moment I took for granted.
+                </p>
+                
+                <div style="margin: 40px 0; padding: 20px; border-radius: 10px; background: rgba(255,255,255,0.05);">
+                    <p style="color: #ffd6e7; font-style: italic; text-align: center;">
+                        ❝ Even if we're 5 centimeters apart, I want to bridge that distance 
+                        with sincere apologies and changed behavior. ❞
+                    </p>
+                </div>
+            </div>
+            
+            <div class="anime-card" style="max-width: 600px; margin: 30px auto; background: rgba(255, 105, 180, 0.1);">
+                <h3 style="color: #ffd6e7; margin-bottom: 20px; font-size: 1.5rem;">
+                    <span style="margin-right: 10px;">🌸</span>
+                    My Sincere Promise
+                    <span style="margin-left: 10px;">🌸</span>
+                </h3>
+                
+                <ul style="color: white; text-align: left; padding-left: 20px; line-height: 1.8;">
+                    <li style="margin-bottom: 15px;">I will listen more carefully to your feelings</li>
+                    <li style="margin-bottom: 15px;">I will be more patient and understanding</li>
+                    <li style="margin-bottom: 15px;">I will communicate openly and honestly</li>
+                    <li style="margin-bottom: 15px;">I will appreciate you every single day</li>
+                    <li>I will become the person you deserve</li>
+                </ul>
+            </div>
+            
+            <div class="mt-40">
+                <div class="flex-center">
+                    <a href="index.html" class="anime-btn">
+                        <span style="margin-right: 10px;">←</span>
+                        Back Home
+                    </a>
+                    
+                    <button onclick="acceptApology()" class="anime-btn anime-btn-primary">
+                        Accept My Apology
+                        <span style="margin-left: 10px;">💝</span>
+                    </button>
+                    
+                    <a href="third.html" class="anime-btn">
+                        Continue Reading
+                        <span style="margin-left: 10px;">→</span>
+                    </a>
+                </div>
+                
+                <div class="mt-30 flex-center">
+                    <a href="third.html" class="anime-btn" style="font-size: 0.9rem; padding: 8px 20px;">Page 3: Promises</a>
+                    <a href="fourth.html" class="anime-btn" style="font-size: 0.9rem; padding: 8px 20px;">Page 4: Special</a>
+                </div>
+            </div>
+            
+            <div class="mt-40">
+                <div class="anime-card" style="max-width: 500px; margin: 0 auto; background: rgba(255,255,255,0.05);">
+                    <p style="color: rgba(255,255,255,0.8); font-style: italic; text-align: center; font-size: 0.9rem;">
+                        "Even tears can be beautiful when they're sincere, 
+                        like morning dew on cherry blossoms."
+                    </p>
+                    <div style="text-align: right; margin-top: 15px; color: #ffd6e7;">
+                        <strong>@anujbuilds</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="particles.js"></script>
+    <script src="weather-effects.js"></script>
+    <script src="music-player.js"></script>
+    <script src="save-progress.js"></script>
+    <script src="transitions.js"></script>
+
+    <script>
+        // Theme toggle function
+        function toggleTheme() {
+            const toggle = document.querySelector('.theme-toggle');
+            const isNight = !toggle.classList.contains('night');
+            
+            toggle.classList.toggle('night');
+            
+            // Change body class for different backgrounds
+            const body = document.body;
+            const currentBg = body.className;
+            
+            if (isNight) {
+                body.className = currentBg.replace('bg-anime-2', 'night-bg-2');
+                document.dispatchEvent(new CustomEvent('themeChange', {
+                    detail: { isNight: true }
+                }));
+            } else {
+                body.className = currentBg.replace('night-bg-2', 'bg-anime-2');
+                document.dispatchEvent(new CustomEvent('themeChange', {
+                    detail: { isNight: false }
+                }));
+            }
+        }
+        
+        // Create rain effect
+        function createRain() {
+            const container = document.getElementById('rainContainer');
+            for(let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const drop = document.createElement('div');
+                    drop.className = 'rain-drop';
+                    drop.style.left = `${Math.random() * 100}vw`;
+                    drop.style.animationDuration = `${Math.random() * 1 + 1}s`;
+                    drop.style.animationDelay = `${Math.random() * 2}s`;
+                    drop.style.opacity = Math.random() * 0.5 + 0.3;
+                    container.appendChild(drop);
+                }, i * 50);
+            }
+        }
+        
+        // Accept apology function
+        function acceptApology() {
+            const heart = document.querySelector('.apology-heart');
+            const button = document.querySelector('.anime-btn-primary');
+            
+            // Change heart
+            heart.innerHTML = '💖';
+            heart.style.animation = 'none';
+            heart.style.filter = 'drop-shadow(0 0 25px rgba(255, 20, 147, 0.7))';
+            
+            // Change button
+            button.innerHTML = 'Apology Accepted! 💖';
+            button.style.background = 'rgba(76, 175, 80, 0.3)';
+            button.style.borderColor = 'rgba(76, 175, 80, 0.5)';
+            button.onclick = null;
+            button.style.cursor = 'default';
+            
+            // Show message
+            const message = document.createElement('div');
+            message.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: rgba(255, 255, 255, 0.95);
+                    padding: 30px;
+                    border-radius: 15px;
+                    text-align: center;
+                    z-index: 9999;
+                    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+                    max-width: 400px;
+                    width: 90%;
+                    animation: fadeIn 0.5s ease;
+                ">
+                    <div style="font-size: 3rem; margin-bottom: 20px;">💖</div>
+                    <h3 style="color: #333; margin-bottom: 15px;">Thank You for Your Forgiveness!</h3>
+                    <p style="color: #555; line-height: 1.6;">
+                        This means the world to me. Like cherry blossoms blooming anew,
+                        I promise to cherish this second chance.
+                    </p>
+                    <button onclick="this.parentElement.remove()" 
+                            style="margin-top: 20px; padding: 10px 25px; 
+                                   background: #667eea; color: white; 
+                                   border: none; border-radius: 20px; 
+                                   cursor: pointer;">
+                        Close
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(message);
+            
+            // Stop rain
+            document.querySelectorAll('.rain-drop').forEach(drop => {
+                drop.style.animation = 'none';
+                drop.style.opacity = '0';
+            });
+            
+            // Create celebration blossoms
+            for(let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const blossom = document.createElement('div');
+                    blossom.innerHTML = '🌸';
+                    blossom.style.position = 'fixed';
+                    blossom.style.left = `${Math.random() * 100}vw`;
+                    blossom.style.top = '-50px';
+                    blossom.style.fontSize = `${Math.random() * 25 + 15}px`;
+                    blossom.style.zIndex = '9998';
+                    blossom.style.opacity = '0.9';
+                    
+                    document.body.appendChild(blossom);
+                    
+                    setTimeout(() => blossom.remove(), 3000);
+                }, i * 100);
+            }
+            
+            // Record achievement
+            if (window.progressTracker) {
+                window.progressTracker.recordAchievement('apology_accepted');
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide loading screen
+            setTimeout(() => {
+                const loadingScreen = document.querySelector('.loading-screen');
+                loadingScreen.classList.add('hidden');
+            }, 2000);
+            
+            createRain();
+        });
+    </script>
+</body>
+</html>

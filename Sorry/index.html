@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Apology | Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+</head>
+<body class="bg-anime-1">
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div style="text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 20px; animation: float 3s ease-in-out infinite;">🌸</div>
+            <div class="loading-text">
+                Loading <span class="loading-dots"><span>.</span><span>.</span><span>.</span></span>
+            </div>
+            <div style="margin-top: 30px; font-size: 0.9rem; opacity: 0.7;">
+                5 Centimeters Per Second
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="anime-nav">
+        <button class="nav-btn active" onclick="window.location.href='index.html'">
+            <span>🏠</span> Home
+        </button>
+        <button class="nav-btn" onclick="window.location.href='sorry.html'">
+            <span>💔</span> Apology
+        </button>
+        <button class="nav-btn" onclick="window.location.href='third.html'">
+            <span>🤝</span> Promises
+        </button>
+        <button class="nav-btn" onclick="window.location.href='fourth.html'">
+            <span>💭</span> Memories
+        </button>
+    </nav>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <div class="toggle-slider">🌙</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <div class="hero-section">
+            <div class="anime-character">👋</div>
+            
+            <h1 class="anime-title" style="color: #333; font-size: 3rem;">
+                Hey Cutiepie
+                <span style="font-size: 2rem; display: block; margin-top: 10px; color: #667eea;">
+                    君に会いたい
+                </span>
+            </h1>
+            
+            <div class="distance-line"></div>
+            
+            <div class="intro-text">
+                <p class="anime-text" style="color: #555; font-size: 1.3rem; line-height: 1.8;">
+                    Can we talk for a moment? There's something important I want to tell you...
+                </p>
+                
+                <p class="anime-text" style="color: #666; margin-top: 20px;">
+                    Like cherry blossoms falling at 5 centimeters per second, 
+                    I want to share my feelings slowly, beautifully, and sincerely.
+                </p>
+                
+                <div style="margin: 40px 0;">
+                    <div class="sparkle" style="font-size: 2rem; margin-bottom: 20px;">🌸 🌸 🌸</div>
+                </div>
+            </div>
+            
+            <div class="mt-40">
+                <div class="flex-center">
+                    <a href="sorry.html" class="anime-btn anime-btn-primary" style="font-size: 1.2rem;">
+                        Read My Message 
+                        <span style="margin-left: 10px;">→</span>
+                    </a>
+                    
+                    <a href="fourth.html" class="anime-btn" style="background: rgba(102, 126, 234, 0.3);">
+                        Jump to Memories 
+                        <span style="margin-left: 10px;">💭</span>
+                    </a>
+                </div>
+                
+                <div class="mt-30 flex-center">
+                    <a href="sorry.html" class="anime-btn" style="font-size: 0.9rem; padding: 8px 20px;">Page 2: Apology</a>
+                    <a href="third.html" class="anime-btn" style="font-size: 0.9rem; padding: 8px 20px;">Page 3: Promises</a>
+                    <a href="fourth.html" class="anime-btn" style="font-size: 0.9rem; padding: 8px 20px;">Page 4: Special</a>
+                </div>
+            </div>
+            
+            <div class="mt-40">
+                <div class="anime-card" style="max-width: 500px; margin: 0 auto;">
+                    <p style="color: #888; font-style: italic; text-align: center;">
+                        "The time we spend apart only makes the heart grow fonder, 
+                        like sakura petals waiting for spring."
+                    </p>
+                    <div style="text-align: right; margin-top: 15px; color: #667eea;">
+                        <strong>@anujbuilds</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="particles.js"></script>
+    <script src="weather-effects.js"></script>
+    <script src="music-player.js"></script>
+    <script src="save-progress.js"></script>
+    <script src="transitions.js"></script>
+
+    <script>
+        // Theme toggle function
+        function toggleTheme() {
+            const toggle = document.querySelector('.theme-toggle');
+            const isNight = !toggle.classList.contains('night');
+            
+            toggle.classList.toggle('night');
+            
+            // Change body class for different backgrounds
+            const body = document.body;
+            const currentBg = body.className;
+            
+            if (isNight) {
+                body.className = currentBg.replace('bg-anime-1', 'night-bg-1');
+                document.dispatchEvent(new CustomEvent('themeChange', {
+                    detail: { isNight: true }
+                }));
+            } else {
+                body.className = currentBg.replace('night-bg-1', 'bg-anime-1');
+                document.dispatchEvent(new CustomEvent('themeChange', {
+                    detail: { isNight: false }
+                }));
+            }
+        }
+        
+        // Page-specific interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide loading screen
+            setTimeout(() => {
+                const loadingScreen = document.querySelector('.loading-screen');
+                loadingScreen.classList.add('hidden');
+            }, 2000);
+            
+            // Add click effect to character
+            const character = document.querySelector('.anime-character');
+            if (character) {
+                character.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.1)';
+                    this.style.background = 'linear-gradient(135deg, #667eea, #764ba2)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        this.style.background = 'linear-gradient(135deg, #ff9a9e, #fad0c4)';
+                    }, 300);
+                    
+                    // Create sparkles
+                    for(let i = 0; i < 10; i++) {
+                        setTimeout(() => {
+                            const sparkle = document.createElement('div');
+                            sparkle.innerHTML = '✨';
+                            sparkle.style.position = 'fixed';
+                            sparkle.style.left = `${Math.random() * 100}vw`;
+                            sparkle.style.top = `${Math.random() * 100}vh`;
+                            sparkle.style.fontSize = `${Math.random() * 20 + 10}px`;
+                            sparkle.style.zIndex = '999';
+                            sparkle.style.pointerEvents = 'none';
+                            sparkle.style.animation = 'sparkle 1s ease-out';
+                            
+                            document.body.appendChild(sparkle);
+                            
+                            setTimeout(() => sparkle.remove(), 1000);
+                        }, i * 100);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
